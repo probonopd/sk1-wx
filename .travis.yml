@@ -26,3 +26,4 @@ script:
   - git clone https://github.com/sk1project/build-cache subproj/build-cache
   - python bbox.py pull
   - python bbox.py build
+  - find . -type f -executable
