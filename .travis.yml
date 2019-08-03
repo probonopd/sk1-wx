@@ -1,20 +1,12 @@
+os: linux
+sudo: required
+dist: xenial
+compiler: gcc
 language: python
 python:
   - "2.7"
-
-matrix:
-  include:
-    - os: linux
-      sudo: required
-      dist: xenial
-      compiler: gcc
-      services:
-        - docker
-
+  
 script:
-  - git remote add upstream https://github.com/sk1project/sk1-wx
-  - git fetch upstream
-  - git pull upstream master
   - sudo apt-get install -y sshpass gettext
   - mkdir subproj
   - git clone https://github.com/sk1project/build-utils subproj/build-utils
@@ -23,6 +15,4 @@ script:
   - ln -s ../subproj/uniconvertor/src/uc2 src/uc2
   - git clone https://github.com/sk1project/wal subproj/wal
   - ln -s ../subproj/wal/src/wal src/wal
-  - git clone https://github.com/sk1project/build-cache subproj/build-cache
-  - python bbox.py pull
-  - python bbox.py build
+  - python setup.py bdist_deb
