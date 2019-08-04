@@ -19,7 +19,7 @@ script:
   - ( mkdir appdir ; cd appdir/ ; dpkg-deb -x $(find .. -name 'python-sk1-*.deb') . )
   # Bundle Python
   - cd appdir/
-  - apt-get download libcairo2 liblcms2 libmagickwand libpango1.0 python-wxgtk3.0 python-reportlab python-cups python-pil python-cairo libpng12-0 libpython2.7-stdlib python2.7 python2.7-minimal libpython2.7-minimal python-wxgtk3.0 libwxgtk3.0-0v5 libwxbase3.0-0v5
+  - apt-get download libcairo2 libpango1.0 python-wxgtk3.0 python-reportlab python-cups python-pil python-cairo libpng12-0 libpython2.7-stdlib python2.7 python2.7-minimal libpython2.7-minimal python-wxgtk3.0 libwxgtk3.0-0v5 libwxbase3.0-0v5
   - find *.deb -exec dpkg-deb -x {} . \;
   - rm *deb
   - cd ..
