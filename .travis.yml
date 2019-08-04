@@ -16,7 +16,8 @@ script:
   - git clone https://github.com/sk1project/wal subproj/wal
   - ln -s ../subproj/wal/src/wal src/wal
   - python setup.py bdist_deb
-  - find build/lib.linux-x86_64-2.7/sk1/
+  - ( mkdir appdir ; cd appdir/ ; dpkg-deb -x ../python-sk1-*.deb . )
+  - find appdir/
   - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
   - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
   - ./linuxdeployqt-continuous-x86_64.AppImage build/lib.linux-x86_64-2.7/sk1/usr/share/applications/*.desktop -appimage
