@@ -7,7 +7,7 @@ python:
   - "2.7"
   
 script:
-  - sudo apt-get install -y sshpass gettext
+  - sudo apt-get install -y sshpass gettext python-cairo-dev
   - mkdir subproj
   - git clone https://github.com/sk1project/build-utils subproj/build-utils
   - ln -s subproj/build-utils/src/utils utils
