@@ -19,7 +19,7 @@ script:
   - ( mkdir appdir ; cd appdir/ ; dpkg-deb -x $(find .. -name 'python-sk1-*.deb') . )
   # Bundle Python
   - cd appdir/
-  - apt-get download libpython2.7-stdlib python2.7 python2.7-minimal libpython2.7-minimal python-wxgtk3.0
+  - apt-get download libpython2.7-stdlib python2.7 python2.7-minimal libpython2.7-minimal python-wxgtk3.0 libwxgtk3.0-0v5 libwxbase3.0-0v5
   - find *.deb -exec dpkg-deb -x {} . \;
   - rm *deb
   - cd ..
@@ -27,7 +27,8 @@ script:
   - cp appdir/usr/lib/sk1-wx-*/sk1/share/icons/generic/sk1-icon-64x64.png appdir/sk1.png
   # FIXME: Icon naming in appdir/usr/share probably still broken
   - cp appdir/usr/share/applications/sk1.desktop appdir/
-  - ( mkdir -p appdir/usr/lib/python2.7/site-packages/ ; cd appdir/usr/lib/python2.7/site-packages/ ; ln -s ../../sk1-wx-*/* . )
+  - ( cd appdir/usr/lib/python2.7/dist-packages/ ; ln -s ../../sk1-wx-*/* . )
+  - ( cd appdir/usr/lib/python2.7/dist-packages/ ; ln -s wx-3.0-gtk2/* . )
   - find appdir/
   - wget -c -nv "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage"
   - chmod a+x appimagetool-x86_64.AppImage
