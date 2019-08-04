@@ -24,7 +24,8 @@ script:
   - rm *deb
   - cd ..
   - wget -c -nv "https://github.com/AppImage/AppImageKit/releases/download/continuous/AppRun-x86_64" -O ./appdir/AppRun ; chmod +x ./appdir/AppRun
-  - cp appdir/usr/lib/sk1-wx-*/sk1/share/icons/generic/sk1-icon-64x64.png appdir/
+  - cp appdir/usr/lib/sk1-wx-*/sk1/share/icons/generic/sk1-icon-64x64.png appdir/sk1.png
+  - cp appdir/usr/lib/sk1-wx-*/sk1/share/icons/generic/sk1-icon-64x64.png appdir/usr/lib/sk1-wx-*/sk1/share/icons/generic/sk1.png # FIXME
   - cp appdir/usr/share/applications/sk1.desktop appdir/
   - find appdir/
   - wget -c -nv "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage"
