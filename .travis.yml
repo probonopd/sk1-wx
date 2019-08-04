@@ -24,10 +24,12 @@ script:
   - rm *deb
   - cd ..
   - wget -c -nv "https://github.com/AppImage/AppImageKit/releases/download/continuous/AppRun-x86_64" -O ./appdir/AppRun ; chmod +x ./appdir/AppRun
+  - cp appdir/usr/lib/sk1-wx-*/sk1/share/icons/generic/sk1-icon-64x64.png appdir/
+  - cp appdir/usr/share/applications/sk1.desktop appdir/
   - find appdir/
-  - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
-  - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
-  - ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/sk1.desktop -appimage
+  - wget -c -nv "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage"
+  - chmod a+x appimagetool-x86_64.AppImage
+  - ./appimagetool-x86_64.AppImage appdir/
 
 after_success:
   - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
