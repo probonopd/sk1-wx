@@ -17,10 +17,17 @@ script:
   - ln -s ../subproj/wal/src/wal src/wal
   - python setup.py bdist_deb
   - ( mkdir appdir ; cd appdir/ ; dpkg-deb -x $(find .. -name 'python-sk1-*.deb') . )
+  # Bundle Python
+  - cd appdir/
+  - apt-get download libpython2.7-stdlib python2.7 python2.7-minimal libpython2.7-minimal
+  - find *.deb -exec dpkg-deb -x {} . \;
+  - rm *deb
+  - cd ..
+  - wget -c -nv "https://github.com/AppImage/AppImageKit/releases/download/continuous/AppRun-x86_64" -O ./appdir/AppRun ; chmod +x ./appdir/AppRun
   - find appdir/
   - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
   - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
-  - ./linuxdeployqt-continuous-x86_64.AppImage build/lib.linux-x86_64-2.7/sk1/usr/share/applications/*.desktop -appimage
+  - ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/*.desktop -appimage
 
 after_success:
   - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
