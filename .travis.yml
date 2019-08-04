@@ -19,7 +19,7 @@ script:
   - find build/lib.linux-x86_64-2.7/sk1/
   - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
   - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
-  - ./linuxdeployqt-continuous-x86_64.AppImage build/deb-root/usr/share/applications/*.desktop -appimage
+  - ./linuxdeployqt-continuous-x86_64.AppImage build/lib.linux-x86_64-2.7/sk1/usr/share/applications/*.desktop -appimage
 
 after_success:
   - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
