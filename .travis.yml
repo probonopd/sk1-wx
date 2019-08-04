@@ -15,9 +15,8 @@ script:
   - ln -s ../subproj/uniconvertor/src/uc2 src/uc2
   - git clone https://github.com/sk1project/wal subproj/wal
   - ln -s ../subproj/wal/src/wal src/wal
-  - find . -name "deb-root" || true
-  - python setup.py bdist_deb
-  - find . -name "deb-root" || true
+  # python setup.py bdist_deb
+  - find build/lib.linux-x86_64-2.7/sk1/
   - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
   - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
   - ./linuxdeployqt-continuous-x86_64.AppImage build/deb-root/usr/share/applications/*.desktop -appimage
